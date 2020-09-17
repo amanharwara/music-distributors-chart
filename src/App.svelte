@@ -81,14 +81,12 @@
       rel="noreferrer noopener">/u/JustKarmo</a> on Reddit and <a
       href="https://aristake.com/cd-baby-tunecore-ditto-mondotunes-zimbalam-or/"
       target="_blank"
-      rel="noreferrer noopener">Ari's Take</a>.
-  </p>
-  <p>
-    If you find something wrong with the chart, or would like to contribute to
-    it, open an <a
+      rel="noreferrer noopener">Ari's Take</a>. <br /> If you find something wrong
+    with the chart, or would like to contribute to it, open an <a
       href="https://github.com/amanharwara/music-distributors-chart/issues"
       target="_blank"
-      rel="noreferrer noopener">issue</a> on GitHub.
+      rel="noreferrer noopener">issue</a> on GitHub. <br /> The table can be sorted
+    according to any of the attributes by clicking on the heading, e.g "Commission".
   </p>
   <Table dark={dark_mode} />
   <footer>
