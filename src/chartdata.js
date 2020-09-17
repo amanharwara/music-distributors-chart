@@ -1,17 +1,18 @@
 const chartdata = [
   {
     name: "OneRPM",
-    royalties: 85,
+    distribution_cost: { value: "$0", weighted_value: 0 },
+    commission: 15,
     stores: 38,
     video_distribution: {
       value: true,
-      hint: "Free (50% of royalties)",
+      hint: "Free (50% of commission)",
+      weighted_value: 1,
     },
     content_id: true,
     ig_music: true,
     payout_minimum: 0,
     soundcloud_monetization: false,
-    avg_approval_time: "48h",
     make_changes_after_distribution: {
       value: true,
       hint: "Artwork, Titles, Audio Files",
@@ -19,21 +20,23 @@ const chartdata = [
     marketing_tools: {
       value: true,
       hint: "Smart Links, Pre-Save, Promo Art",
+      weighted_value: 1,
     },
   },
   {
     name: "Amuse (Free Plan)",
-    royalties: 100,
-    stores: 8,
+    distribution_cost: { value: "$0", weighted_value: 0 },
+    commission: 0,
+    stores: 9,
     video_distribution: {
       value: false,
       hint: null,
+      weighted_value: 0,
     },
     content_id: false,
     ig_music: false,
     payout_minimum: 10,
     soundcloud_monetization: false,
-    avg_approval_time: "3 weeks",
     make_changes_after_distribution: {
       value: true,
       hint: "Artwork",
@@ -41,21 +44,47 @@ const chartdata = [
     marketing_tools: {
       value: true,
       hint: "Smart Links",
+      weighted_value: 1,
+    },
+  },
+  {
+    name: "Amuse (Paid Plan)",
+    distribution_cost: { value: "$60/yr", weighted_value: 2 },
+    commission: 0,
+    stores: 14,
+    video_distribution: {
+      value: false,
+      hint: null,
+      weighted_value: 0,
+    },
+    content_id: true,
+    ig_music: true,
+    payout_minimum: 10,
+    soundcloud_monetization: false,
+    make_changes_after_distribution: {
+      value: true,
+      hint: "Artwork",
+    },
+    marketing_tools: {
+      value: true,
+      hint: "Smart Links",
+      weighted_value: 1,
     },
   },
   {
     name: "Novecore",
-    royalties: 85,
+    distribution_cost: { value: "$0", weighted_value: 0 },
+    commission: 15,
     stores: 27,
     video_distribution: {
       value: false,
       hint: null,
+      weighted_value: 0,
     },
     content_id: true,
     ig_music: true,
     payout_minimum: 0,
     soundcloud_monetization: true,
-    avg_approval_time: "1-7 days",
     make_changes_after_distribution: {
       value: false,
       hint: null,
@@ -63,21 +92,23 @@ const chartdata = [
     marketing_tools: {
       value: false,
       hint: null,
+      weighted_value: 0,
     },
   },
   {
     name: "Soundrop",
-    royalties: 85,
+    distribution_cost: { value: "$0", weighted_value: 0 },
+    commission: 15,
     stores: 12,
     video_distribution: {
       value: false,
       hint: null,
+      weighted_value: 0,
     },
     content_id: false,
     ig_music: true,
     payout_minimum: 20,
     soundcloud_monetization: false,
-    avg_approval_time: "5-10 days",
     make_changes_after_distribution: {
       value: true,
       hint: "Artwork, Titles",
@@ -85,21 +116,23 @@ const chartdata = [
     marketing_tools: {
       value: true,
       hint: "Pre-Save, Show.co Tools",
+      weighted_value: 1,
     },
   },
   {
     name: "United Masters",
-    royalties: 90,
+    distribution_cost: { value: "$0", weighted_value: 0 },
+    commission: 10,
     stores: 31,
     video_distribution: {
       value: true,
       hint: "Only If Accepted",
+      weighted_value: 1,
     },
     content_id: true,
     ig_music: true,
     payout_minimum: 50,
     soundcloud_monetization: true,
-    avg_approval_time: "1-7 days",
     make_changes_after_distribution: {
       value: false,
       hint: null,
@@ -107,21 +140,23 @@ const chartdata = [
     marketing_tools: {
       value: true,
       hint: "Smart Links, Pre-Save",
+      weighted_value: 1,
     },
   },
   {
     name: "Routenote (Free Plan)",
-    royalties: 85,
+    distribution_cost: { value: "$0", weighted_value: 0 },
+    commission: 15,
     stores: 28,
     video_distribution: {
       value: false,
       hint: null,
+      weighted_value: 0,
     },
     content_id: true,
     ig_music: true,
     payout_minimum: 50,
     soundcloud_monetization: true,
-    avg_approval_time: "72h",
     make_changes_after_distribution: {
       value: true,
       hint: "Artwork, Titles",
@@ -129,6 +164,31 @@ const chartdata = [
     marketing_tools: {
       value: false,
       hint: null,
+      weighted_value: 0,
+    },
+  },
+  {
+    name: "DistroKid",
+    distribution_cost: { value: "$19.99/yr", weighted_value: 1 },
+    commission: 0,
+    stores: 17,
+    video_distribution: {
+      value: false,
+      hint: null,
+      weighted_value: 0,
+    },
+    content_id: true,
+    ig_music: true,
+    payout_minimum: 0,
+    soundcloud_monetization: true,
+    make_changes_after_distribution: {
+      value: true,
+      hint: "Artwork, Titles",
+    },
+    marketing_tools: {
+      value: true,
+      hint: "Pre-save",
+      weighted_value: 1,
     },
   },
 ];
