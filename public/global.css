@@ -2,21 +2,26 @@ html,
 body {
   position: relative;
   width: 100%;
-  height: 100%;
 }
 
 body {
   color: #333;
   margin: 0;
+  background: #f0f0f0;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 a {
-  color: #155fe9;
+  color: #00ccff;
 }
 
 .dark_mode a {
-  color: #276ae7;
+  color: #00ccff;
+}
+
+.dark_mode {
+  background: #0e0e0e;
+  color: #fafafa;
 }

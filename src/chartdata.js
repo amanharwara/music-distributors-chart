@@ -191,5 +191,29 @@ const chartdata = [
       weighted_value: 1,
     },
   },
+  {
+    name: "Freshtunes",
+    distribution_cost: { value: "$0", weighted_value: 0 },
+    commission: 0,
+    stores: 15,
+    video_distribution: {
+      value: false,
+      hint: null,
+      weighted_value: 0,
+    },
+    content_id: true,
+    ig_music: false,
+    payout_minimum: 25,
+    soundcloud_monetization: false,
+    make_changes_after_distribution: {
+      value: false,
+      hint: null,
+    },
+    marketing_tools: {
+      value: true,
+      hint: "Promotion",
+      weighted_value: 1,
+    },
+  },
 ];
 export default chartdata;

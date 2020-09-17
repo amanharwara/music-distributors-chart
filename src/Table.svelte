@@ -179,6 +179,34 @@
     color: #fafafa;
     border: 1px solid rgba(255, 255, 255, 0.5);
   }
+  #clear-sort {
+    font-size: 0.8rem;
+  }
+
+  @media screen and (min-width: 1370px) {
+    #search {
+      padding: 0.5vw;
+      font-size: 1vw;
+    }
+    #clear-sort {
+      font-size: 1vw;
+    }
+    td,
+    th {
+      padding: 0.45vw;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    table {
+      overflow: hidden;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    #clear-sort {
+      margin-bottom: 1rem;
+    }
+  }
 </style>
 
 <input
