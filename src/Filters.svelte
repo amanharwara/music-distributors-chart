@@ -4,7 +4,7 @@
 <style>
   .filters {
     margin: 0.5rem 0;
-    display: flex;
+    display: inline-flex;
   }
   .filter {
     margin-right: 1rem;

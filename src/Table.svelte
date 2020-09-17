@@ -12,7 +12,7 @@
   $: {
     sortable_chartdata = original_chartdata.filter((service) =>
       search_value && search_value.length > 0
-        ? service.name.toLowerCase().includes(search_value)
+        ? service.name.toLowerCase().includes(search_value.toLowerCase())
         : true
     );
   }
@@ -67,7 +67,7 @@
   ascending_element.className = "ascending";
   ascending_element.textContent = "▼";
 
-  $: {
+  const clearSortIcons = () => {
     if (document.querySelector(".descending")) {
       document.querySelector(".descending").remove();
     }
@@ -75,6 +75,10 @@
     if (document.querySelector(".ascending")) {
       document.querySelector(".ascending").remove();
     }
+  };
+
+  $: {
+    clearSortIcons();
 
     if (current_sort_id) {
       let sorted = sortable_chartdata.sort((prev, next) => {
@@ -98,6 +102,13 @@
       }
     }
   }
+
+  const clearSort = () => {
+    current_sort_id = undefined;
+    descending = false;
+    clearSortIcons();
+    sortable_chartdata = original_chartdata;
+  };
 </script>
 
 <style>
@@ -161,6 +172,12 @@
     padding: 0.35rem 0.5rem;
     font-size: 1rem;
     box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  #search.dark_mode {
+    background: #141414;
+    color: #fafafa;
+    border: 1px solid rgba(255, 255, 255, 0.5);
   }
 </style>
 
@@ -168,8 +185,10 @@
   id="search"
   type="text"
   placeholder="Search..."
-  bind:value={search_value} />
+  bind:value={search_value}
+  class:dark_mode={dark} />
 <Filters on:click={handleFilterClick} />
+<button id="clear-sort" on:click={clearSort}>Clear Sort</button>
 <table class:dark_mode={dark}>
   <thead on:click={handleSortClick}>
     <th id="name">Name</th>
