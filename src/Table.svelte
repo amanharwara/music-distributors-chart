@@ -9,16 +9,6 @@
 
   let search_value;
 
-  $: {
-    sortable_chartdata = original_chartdata.filter((service) => {
-      return search_value && search_value.length > 0
-        ? JSON.stringify(service)
-            .toLowerCase()
-            .includes(search_value.toLowerCase())
-        : true;
-    });
-  }
-
   const handleFilterClick = (e) => {
     if (e.target.id) {
       let id = e.target.id;
@@ -27,7 +17,13 @@
   };
 
   $: {
-    let filtered_chartdata = original_chartdata;
+    let filtered_chartdata = original_chartdata.filter((service) => {
+      return search_value && search_value.length > 0
+        ? JSON.stringify(service)
+            .toLowerCase()
+            .includes(search_value.toLowerCase())
+        : true;
+    });
     for (let key in filterFunctions) {
       let filter = filterFunctions[key];
       if (filter.value) {
@@ -104,13 +100,6 @@
       }
     }
   }
-
-  const clearSort = () => {
-    current_sort_id = undefined;
-    descending = false;
-    clearSortIcons();
-    sortable_chartdata = original_chartdata;
-  };
 </script>
 
 <style>
@@ -192,16 +181,10 @@
     color: #fafafa;
     border: 1px solid rgba(255, 255, 255, 0.5);
   }
-  #clear-sort {
-    font-size: 0.8rem;
-  }
 
   @media screen and (min-width: 1370px) {
     #search {
       padding: 0.5vw;
-      font-size: 1vw;
-    }
-    #clear-sort {
       font-size: 1vw;
     }
     td,
@@ -216,20 +199,13 @@
       max-width: 100%;
       box-sizing: border-box;
     }
-    #clear-sort {
-      margin-bottom: 1rem;
-    }
   }
 </style>
 
-<input
-  id="search"
-  type="text"
-  placeholder="Search..."
-  bind:value={search_value}
-  class:dark_mode={dark} />
+<label>
+  Search: <input id="search" type="text" bind:value={search_value} class:dark_mode={dark} />
+</label>
 <Filters on:click={handleFilterClick} />
-<button id="clear-sort" on:click={clearSort}>Clear Sort</button>
 <table class:dark_mode={dark}>
   <thead on:click={handleSortClick}>
     <th id="name">Name</th>
@@ -238,12 +214,12 @@
     <th id="stores">No. of Stores</th>
     <th id="video_distribution">Video Distribution</th>
     <th id="content_id">Content ID</th>
-    <th id="ig_music">Instagram Music</th>
+    <th id="ig_music">IG Music</th>
     <th id="payout_minimum">Minimum Payout Threshold</th>
     <th id="make_changes_after_distribution">
       Make Changes After Distribution
     </th>
-    <th id="marketing_tools">Marketing Tools</th>
+    <th id="extra_tools">Extra Tools</th>
   </thead>
   <tbody>
     {#each sortable_chartdata as service (service.name)}
@@ -254,25 +230,31 @@
             href={service.url}
             rel="noreferrer noopener">{service.name}</a>
         </td>
-        <td class="price">{service.price.value}</td>
-        <td>{service.commission}%</td>
-        <td>{service.stores}</td>
-        <td>
+        <td class="price" title="Price/Cost">
+          {@html service.price.value.replaceAll(/\n/g, '<br />')}
+        </td>
+        <td title="Commission">
+          {@html service.commission.value.replaceAll(/\n/g, '<br />')}
+        </td>
+        <td title="Number of Stores">{service.stores}</td>
+        <td title="Music Video Distribution">
           {#if service.video_distribution.value === true}
             {'✅'}
           {:else if service.video_distribution.value}
-            {service.video_distribution.value}
+            {@html service.video_distribution.value.replaceAll(/\n/g, '<br />')}
           {:else}{'❌'}{/if}
         </td>
-        <td>
+        <td title="YouTube Content ID">
           {#if service.content_id.value === true}
             {'✅'}
           {:else if service.content_id.value}
             {service.content_id.value}
           {:else}{'❌'}{/if}
         </td>
-        <td>{service.ig_music ? '✅' : '❌'}</td>
-        <td>${service.payout_minimum}</td>
+        <td title="Facebook/Instagram Music">
+          {service.ig_music ? '✅' : '❌'}
+        </td>
+        <td title="Minimum Payment Threshold">${service.payout_minimum}</td>
         <td class="make_changes">
           {#if service.make_changes_after_distribution.value === true}
             {'✅'}
@@ -281,10 +263,10 @@
           {:else}{'❌'}{/if}
         </td>
         <td>
-          {#if service.marketing_tools.value === true}
+          {#if service.extra_tools.value === true}
             {'✅'}
-          {:else if service.marketing_tools.value}
-            {service.marketing_tools.value}
+          {:else if service.extra_tools.value}
+            {service.extra_tools.value}
           {:else}{'❌'}{/if}
         </td>
       </tr>

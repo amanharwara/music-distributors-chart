@@ -14,7 +14,7 @@ body {
 }
 
 a {
-  color: #0084ff;
+  color: #0059ff;
 }
 
 .dark_mode a {
@@ -24,4 +24,10 @@ a {
 .dark_mode {
   background: #0e0e0e;
   color: #fafafa;
+}
+
+.ascending,
+.descending {
+  display: inline-block;
+  margin-left: 0.5rem;
 }

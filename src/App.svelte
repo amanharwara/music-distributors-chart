@@ -26,7 +26,7 @@
   }
 
   h1 {
-    color: #0084ff;
+    color: #0059ff;
     font-size: 2.5rem;
     font-weight: 100;
     margin: 0;
@@ -42,6 +42,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+    flex-wrap: wrap;
   }
 
   :global(.dark_mode h1) {
