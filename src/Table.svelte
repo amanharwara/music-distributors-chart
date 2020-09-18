@@ -117,6 +117,9 @@
     display: table;
     border-collapse: collapse;
   }
+  a {
+    color: #fff;
+  }
   td,
   th {
     text-align: center;
@@ -137,6 +140,9 @@
   td:first-child {
     background: #313131;
     color: #fff;
+    padding: 0.25rem 0.5rem;
+    height: 100%;
+    display: table-cell;
   }
   tr,
   thead {
@@ -220,14 +226,13 @@
 <table class:dark_mode={dark}>
   <thead on:click={handleSortClick}>
     <th id="name">Name</th>
-    <th id="distribution_cost">Distribution Cost</th>
+    <th id="price">Price</th>
     <th id="commission">Commission</th>
     <th id="stores">No. of Stores</th>
     <th id="video_distribution">Video Distribution</th>
     <th id="content_id">Content ID</th>
     <th id="ig_music">Instagram Music</th>
     <th id="payout_minimum">Minimum Payout Threshold</th>
-    <th id="soundcloud_monetization">Soundcloud Monetization</th>
     <th id="make_changes_after_distribution">
       Make Changes After Distribution
     </th>
@@ -236,17 +241,45 @@
   <tbody>
     {#each sortable_chartdata as service (service.name)}
       <tr>
-        <td>{service.name}</td>
-        <td>{service.distribution_cost.value}</td>
+        <td>
+          <a
+            target="_blank"
+            href={service.url}
+            rel="noreferrer noopener">{service.name}</a>
+        </td>
+        <td>{service.price.value}</td>
         <td>{service.commission}%</td>
         <td>{service.stores}</td>
-        <td>{service.video_distribution.value ? '✅' : '❌'}</td>
-        <td>{service.content_id ? '✅' : '❌'}</td>
+        <td>
+          {#if service.video_distribution.value === true}
+            {'✅'}
+          {:else if service.video_distribution.value}
+            {service.video_distribution.value}
+          {:else}{'❌'}{/if}
+        </td>
+        <td>
+          {#if service.content_id.value === true}
+            {'✅'}
+          {:else if service.content_id.value}
+            {service.content_id.value}
+          {:else}{'❌'}{/if}
+        </td>
         <td>{service.ig_music ? '✅' : '❌'}</td>
         <td>${service.payout_minimum}</td>
-        <td>{service.soundcloud_monetization ? '✅' : '❌'}</td>
-        <td>{service.make_changes_after_distribution.value ? '✅' : '❌'}</td>
-        <td>{service.marketing_tools.value ? '✅' : '❌'}</td>
+        <td>
+          {#if service.make_changes_after_distribution.value === true}
+            {'✅'}
+          {:else if service.make_changes_after_distribution.value}
+            {service.make_changes_after_distribution.value}
+          {:else}{'❌'}{/if}
+        </td>
+        <td>
+          {#if service.marketing_tools.value === true}
+            {'✅'}
+          {:else if service.marketing_tools.value}
+            {service.marketing_tools.value}
+          {:else}{'❌'}{/if}
+        </td>
       </tr>
     {/each}
   </tbody>

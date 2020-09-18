@@ -26,7 +26,7 @@
   }
 
   h1 {
-    color: #00ccff;
+    color: #0084ff;
     font-size: 2.5rem;
     font-weight: 100;
     margin: 0;
@@ -42,6 +42,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  :global(.dark_mode h1) {
+    color: #00ccff;
   }
 
   @media screen and (min-width: 1370px) {

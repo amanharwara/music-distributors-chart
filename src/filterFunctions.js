@@ -1,7 +1,7 @@
 let filterFunctions = {
   showOnlyFree: {
     value: false,
-    expr: (s) => s.distribution_cost.value === "$0",
+    expr: (s) => s.price.value === "$0",
   },
   hasIGMusic: {
     value: false,
@@ -9,11 +9,11 @@ let filterFunctions = {
   },
   hasVideoDistribution: {
     value: false,
-    expr: (s) => s.video_distribution.value,
+    expr: (s) => s.video_distribution.weighted_value === 1,
   },
   hasContentID: {
     value: false,
-    expr: (s) => s.content_id,
+    expr: (s) => s.content_id.weighted_value === 1,
   },
 };
 
