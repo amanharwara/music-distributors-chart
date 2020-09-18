@@ -79,10 +79,10 @@
     </button>
   </header>
   <p>
-    Original chart data from <a
-      href="https://reddit.com/u/justkarmo"
+    Original chart data by <a
+      href="http://justkarmo.ml/"
       target="_blank"
-      rel="noreferrer noopener">/u/JustKarmo</a> on Reddit and <a
+      rel="noreferrer noopener">JustKarmo</a> and <a
       href="https://aristake.com/cd-baby-tunecore-ditto-mondotunes-zimbalam-or/"
       target="_blank"
       rel="noreferrer noopener">Ari's Take</a>. <br /> If you find something wrong

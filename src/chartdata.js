@@ -275,5 +275,30 @@ const chartdata = [
       weighted_value: 1,
     },
   },
+  {
+    name: "CD Baby",
+    url: "https://cdbaby.com/",
+    price: { value: "Single: $9.95, Album: $29", weighted_value: 2 },
+    commission: 0,
+    stores: 154,
+    video_distribution: {
+      value: false,
+      weighted_value: 0,
+    },
+    content_id: {
+      value: true,
+      weighted_value: 1,
+    },
+    ig_music: true,
+    payout_minimum: 0,
+    make_changes_after_distribution: {
+      value: "Titles, Feature Artists, Pricing on iTunes only",
+      weighted_value: 0,
+    },
+    marketing_tools: {
+      value: "Show.co Tools",
+      weighted_value: 1,
+    },
+  },
 ];
 export default chartdata;

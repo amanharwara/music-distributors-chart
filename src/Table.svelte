@@ -10,11 +10,13 @@
   let search_value;
 
   $: {
-    sortable_chartdata = original_chartdata.filter((service) =>
-      search_value && search_value.length > 0
-        ? service.name.toLowerCase().includes(search_value.toLowerCase())
-        : true
-    );
+    sortable_chartdata = original_chartdata.filter((service) => {
+      return search_value && search_value.length > 0
+        ? JSON.stringify(service)
+            .toLowerCase()
+            .includes(search_value.toLowerCase())
+        : true;
+    });
   }
 
   const handleFilterClick = (e) => {
@@ -137,12 +139,17 @@
   th:last-child {
     border-right: 0;
   }
-  td:first-child {
+  .name {
     background: #313131;
     color: #fff;
     padding: 0.25rem 0.5rem;
     height: 100%;
     display: table-cell;
+  }
+  .price,
+  .make_changes {
+    display: table-cell;
+    padding: 0.25rem 0.5rem;
   }
   tr,
   thead {
@@ -241,13 +248,13 @@
   <tbody>
     {#each sortable_chartdata as service (service.name)}
       <tr>
-        <td>
+        <td class="name">
           <a
             target="_blank"
             href={service.url}
             rel="noreferrer noopener">{service.name}</a>
         </td>
-        <td>{service.price.value}</td>
+        <td class="price">{service.price.value}</td>
         <td>{service.commission}%</td>
         <td>{service.stores}</td>
         <td>
@@ -266,7 +273,7 @@
         </td>
         <td>{service.ig_music ? '✅' : '❌'}</td>
         <td>${service.payout_minimum}</td>
-        <td>
+        <td class="make_changes">
           {#if service.make_changes_after_distribution.value === true}
             {'✅'}
           {:else if service.make_changes_after_distribution.value}
